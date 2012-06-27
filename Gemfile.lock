@@ -41,6 +41,11 @@ GEM
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    factory_girl (3.3.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (3.3.0)
+      factory_girl (~> 3.3.0)
+      railties (>= 3.0.0)
     heroku (2.24.1)
       launchy (>= 0.3.2)
       netrc (~> 0.7.1)
@@ -116,6 +121,7 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
+  factory_girl_rails
   heroku
   jquery-rails
   rails (= 3.2.3)

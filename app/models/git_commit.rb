@@ -1,3 +1,6 @@
 class GitCommit < ActiveRecord::Base
-  # attr_accessible :title, :body
+  attr_accessible :repo, :sha, :image, :email
+
+  validates :repo, :presence => true
+  validates :sha,  :presence => true
 end

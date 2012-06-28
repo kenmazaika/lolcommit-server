@@ -3,4 +3,7 @@ class GitCommit < ActiveRecord::Base
 
   validates :repo, :presence => true
   validates :sha,  :presence => true
+
+  mount_uploader :image, ImageUploader
+  
 end

@@ -13,6 +13,29 @@ class GitCommitsControllerTest < ActionController::TestCase
     assert_response :unprocessable_entity
   end
 
+  test "create failure json" do
+    assert_no_difference 'GitCommit.count' do
+      post :create, :git_commit => {}, :format => :json
+    end
+    assert_response :unprocessable_entity
+    assert ! ActiveSupport::JSON.decode(@response.body)['errors'].blank?
+  end
+
+  test "create success json" do
+    assert_difference 'GitCommit.count' do
+      post :create, :git_commit => {
+        :sha => 'sss',
+        :repo => 'omg'
+      }, :format => :json
+    end
+    gc = GitCommit.last
+    assert_response :success
+    assert_equal gc.id, ActiveSupport::JSON.decode(@response.body)['id']
+  end
+
+
+
+
   test "create success" do
     assert_difference 'GitCommit.count' do
       post :create, :git_commit => {
@@ -48,4 +71,6 @@ class GitCommitsControllerTest < ActionController::TestCase
     assert_equal [gc1.id, gc2.id].sort, ActiveSupport::JSON.decode(@response.body).collect{|gc| gc['id'] }.sort
 
   end
+
+
 end

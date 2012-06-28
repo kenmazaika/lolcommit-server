@@ -8,10 +8,22 @@ class GitCommitsController < ApplicationController
   def create
     @git_commit = GitCommit.create(params[:git_commit])
 
-    if @git_commit.valid?
-      redirect_to git_commit_path(@git_commit)
-    else
-      render :new, :status => :unprocessable_entity
+    respond_to do |format|
+      if @git_commit.valid?
+        format.html do
+          redirect_to git_commit_path(@git_commit)
+        end
+        format.json do
+          render :json => @git_commit
+        end
+      else
+        format.html do
+          render :new, :status => :unprocessable_entity
+        end
+        format.json do
+          render :json => {:errors => @git_commit.errors.as_json }, :status => :unprocessable_entity
+        end
+      end
     end
   end
 

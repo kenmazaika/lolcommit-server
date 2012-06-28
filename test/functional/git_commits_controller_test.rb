@@ -34,4 +34,18 @@ class GitCommitsControllerTest < ActionController::TestCase
     get :show, :id => gc.id
     assert_response :success
   end
+
+  test "index no sha specified" do
+    get :index
+    assert_response :bad_request
+  end
+  test "index" do
+    gc1 = FactoryGirl.create(:git_commit)
+    gc2 = FactoryGirl.create(:git_commit)
+    gc3 = FactoryGirl.create(:git_commit)
+
+    get :index, :shas => [gc1.sha, gc2.sha].join(',')
+    assert_equal [gc1.id, gc2.id].sort, ActiveSupport::JSON.decode(@response.body).collect{|gc| gc['id'] }.sort
+
+  end
 end

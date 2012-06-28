@@ -18,6 +18,15 @@ class GitCommitsController < ApplicationController
   def show
   end
 
+  def index
+    if params[:shas].blank?
+      return head :bad_request
+    end
+
+    commits = GitCommit.where(:sha => params[:shas].split(','))
+    render :json => commits
+  end
+
   private
   helper_method :current_git_commit
   def current_git_commit

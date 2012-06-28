@@ -23,4 +23,15 @@ class GitCommitsControllerTest < ActionController::TestCase
     gc = GitCommit.last
     assert_redirected_to git_commit_path(gc)
   end
+
+  test "show not found" do
+    get :show, :id => 'omg'
+    assert_response :not_found
+  end
+
+  test "show success" do
+    gc = FactoryGirl.create(:git_commit)
+    get :show, :id => gc.id
+    assert_response :success
+  end
 end

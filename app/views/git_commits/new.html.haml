@@ -1,0 +1,7 @@
+= simple_form_for @git_commit, :html => {:multipart => true} do |f|
+  = f.input :sha
+  = f.input :repo
+  = f.input :email
+  = f.input :image, :as => :file
+
+  = f.submit

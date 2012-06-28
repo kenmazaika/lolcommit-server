@@ -1,0 +1,2 @@
+module GitCommitsHelper
+end

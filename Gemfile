@@ -10,6 +10,9 @@ end
 gem 'heroku'
 gem 'uuid'
 
+group :production do
+  gem 'activerecord-postgresql-adapter'
+end
 gem 'fog'
 gem 'haml'
 gem 'simple_form'

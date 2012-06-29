@@ -11,9 +11,12 @@ class AnimatedGif < ActiveRecord::Base
   private
 
   def store_animation
-    split_shas = self.shas.split(',')
+    fetch_images
+    self.image = generate_animation
+  end
+
+  def fetch_images
     commits = GitCommit.where(:sha => split_shas)
-    id = UUID.generate(:compact)
     `mkdir #{directory}`
     commits.collect do |commit|
       image_req = HTTParty.get(commit.image.to_s)
@@ -23,7 +26,9 @@ class AnimatedGif < ActiveRecord::Base
         end
       end
     end
+  end
 
+  def image_files
     images = split_shas.collect do |sha|
       path = "#{directory}/#{sha}.jpg"
       if File.exist?(path)
@@ -32,16 +37,21 @@ class AnimatedGif < ActiveRecord::Base
         nil
       end
     end.compact
+  end
 
-    animation = ImageList.new(*images)
+  def generate_animation
+    animation = ImageList.new(*image_files)
     animation.delay = 75
     animation.write("#{Rails.root}/tmp/#{uuid}.gif")
     @file = File.open("#{Rails.root}/tmp/#{uuid}.gif")
-    self.image = @file
   end
 
   def close_file
     @file.close if @file
+  end
+
+  def split_shas
+    @split_shas ||= self.shas.try(:split, ',')
   end
 
   def directory

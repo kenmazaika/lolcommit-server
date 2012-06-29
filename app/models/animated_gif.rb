@@ -1,23 +1,27 @@
 class AnimatedGif < ActiveRecord::Base
   include Magick
   attr_accessible :shas, :image
-  mount_uploader :image, ImageUploader
-  before_create :store_animation 
-  after_create :close_file
-  # TODO: this code needs tests, also should be
-  # refactored.  Don't pipe to shell to create
-  # directory.  Don't redundantly determine urls.
+  mount_uploader  :image, ImageUploader
+
+  before_create   :store_animation 
+  after_create    :close_file
+
+  validates :shas, :presence => true
+  validate  :validate_shas_has_commits
 
   private
 
   def store_animation
     fetch_images
-    self.image = generate_animation
+    animation = generate_animation
+    self.image = animation
+
+    ! animation.blank?
   end
 
   def fetch_images
     commits = GitCommit.where(:sha => split_shas)
-    `mkdir #{directory}`
+    Dir::mkdir(directory)
     commits.collect do |commit|
       image_req = HTTParty.get(commit.image.to_s)
       if image_req.success?
@@ -40,7 +44,12 @@ class AnimatedGif < ActiveRecord::Base
   end
 
   def generate_animation
-    animation = ImageList.new(*image_files)
+    files = image_files
+    if files.blank?
+      self.errors.add(:shas, 'No files available in s3')
+      return nil
+    end
+    animation = ImageList.new(*files)
     animation.delay = 75
     animation.write("#{Rails.root}/tmp/#{uuid}.gif")
     @file = File.open("#{Rails.root}/tmp/#{uuid}.gif")
@@ -60,5 +69,12 @@ class AnimatedGif < ActiveRecord::Base
 
   def uuid
     @uuid ||= UUID.generate(:compact)
+  end
+
+  def validate_shas_has_commits
+    commits = GitCommit.where(:sha => split_shas)
+    if commits.blank?
+      self.errors.add(:shas, "No valid shas")
+    end
   end
 end

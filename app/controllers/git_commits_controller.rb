@@ -39,12 +39,6 @@ class GitCommitsController < ApplicationController
     render :json => commits
   end
 
-  # -change to a post
-  # -test this
-  def gif
-    render :json => AnimatedGif.create(:shas => params[:shas]) 
-  end
-
   private
   helper_method :current_git_commit
   def current_git_commit

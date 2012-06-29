@@ -1,0 +1,2 @@
+module AnimatedGifsHelper
+end

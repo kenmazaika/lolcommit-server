@@ -1,6 +1,11 @@
 require 'test_helper'
 
 class AnimatedGifTest < ActiveSupport::TestCase
+
+  setup do
+    AnimatedGif.any_instance.unstub(:store_animation)
+  end
+
   test "create from shas" do
     file = File.open("#{Rails.root}/test/fixtures/f0cbd41f2ac.jpg")
     gc = FactoryGirl.create(:git_commit)

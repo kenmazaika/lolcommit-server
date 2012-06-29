@@ -9,6 +9,8 @@ class AnimatedGif < ActiveRecord::Base
   validates :shas, :presence => true
   validate  :validate_shas_has_commits
 
+  DEFAULT_GIF_DELAY = 100
+
   private
 
   def store_animation
@@ -50,7 +52,7 @@ class AnimatedGif < ActiveRecord::Base
       return nil
     end
     animation = ImageList.new(*files)
-    animation.delay = 75
+    animation.delay = DEFAULT_GIF_DELAY
     animation.write("#{Rails.root}/tmp/#{uuid}.gif")
     @file = File.open("#{Rails.root}/tmp/#{uuid}.gif")
   end

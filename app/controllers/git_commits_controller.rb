@@ -39,12 +39,10 @@ class GitCommitsController < ApplicationController
     render :json => commits
   end
 
-  # TODO: everything about this code is bad.
   # -change to a post
   # -test this
-  # -test the model
   def gif
-    render :json => AnimatedGif.create_from_shas(params[:shas].split(',')) 
+    render :json => AnimatedGif.create(:shas => params[:shas]) 
   end
 
   private

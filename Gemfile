@@ -33,6 +33,8 @@ group :assets do
 end
 
 group :test do
+  gem 'mocha', :require => false
+  gem 'fakeweb'
   gem 'factory_girl_rails'
 end
 

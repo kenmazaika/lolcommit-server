@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120627234134) do
+ActiveRecord::Schema.define(:version => 20120629021219) do
+
+  create_table "animated_gifs", :force => true do |t|
+    t.string   "image"
+    t.text     "shas"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "git_commits", :force => true do |t|
     t.string   "image"

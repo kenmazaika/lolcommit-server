@@ -9,6 +9,8 @@ group :development, :test do
 end
 gem 'heroku'
 gem 'uuid'
+gem "rmagick", "2.12.0", :require => 'RMagick'
+gem 'httparty'
 
 group :production do
   gem 'activerecord-postgresql-adapter'

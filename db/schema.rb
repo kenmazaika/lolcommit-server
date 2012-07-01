@@ -38,8 +38,13 @@ ActiveRecord::Schema.define(:version => 20120630211101) do
     t.integer  "github_id"
     t.string   "email"
     t.string   "token"
+    t.string   "api_key"
+    t.string   "api_secret"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "users", ["api_key"], :name => "index_users_on_api_key"
+  add_index "users", ["github_id"], :name => "index_users_on_github_id"
 
 end

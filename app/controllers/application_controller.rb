@@ -20,6 +20,7 @@ class ApplicationController < ActionController::Base
     redirect_to auth_github_url if current_user.blank?
   end
 
+  helper_method :current_user
   def current_user
     if session[:user_id]
       User.find_by_id(session[:user_id])

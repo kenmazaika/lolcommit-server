@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120701012512) do
+ActiveRecord::Schema.define(:version => 20120701142828) do
 
   create_table "animated_gifs", :force => true do |t|
     t.string   "image"
@@ -23,17 +23,34 @@ ActiveRecord::Schema.define(:version => 20120701012512) do
   create_table "git_commits", :force => true do |t|
     t.string   "image"
     t.string   "sha"
-    t.string   "repo"
     t.string   "email"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "user_id"
+    t.integer  "repo_id"
   end
 
   add_index "git_commits", ["email"], :name => "index_git_commits_on_email"
-  add_index "git_commits", ["repo", "sha"], :name => "index_git_commits_on_repo_and_sha"
+  add_index "git_commits", ["repo_id"], :name => "index_git_commits_on_repo_id"
+  add_index "git_commits", ["sha"], :name => "index_git_commits_on_repo_and_sha"
   add_index "git_commits", ["sha"], :name => "index_git_commits_on_sha"
   add_index "git_commits", ["user_id"], :name => "index_git_commits_on_user_id"
+
+  create_table "repos", :force => true do |t|
+    t.string   "username"
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "repos", ["username", "name"], :name => "index_repos_on_username_and_name"
+
+  create_table "repos_users", :id => false, :force => true do |t|
+    t.integer "repo_id"
+    t.integer "user_id"
+  end
+
+  add_index "repos_users", ["repo_id", "user_id"], :name => "index_repos_users_on_repo_id_and_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"

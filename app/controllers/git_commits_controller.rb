@@ -1,12 +1,13 @@
 class GitCommitsController < ApplicationController
   before_filter :require_current_git_commit, :only => [:show]
+  before_filter :require_current_user, :only => [:new, :create]
 
   def new
     @git_commit = GitCommit.new
   end
 
   def create
-    @git_commit = GitCommit.create(params[:git_commit])
+    @git_commit = current_user.git_commits.create(params[:git_commit])
 
     respond_to do |format|
       if @git_commit.valid?

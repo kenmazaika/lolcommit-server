@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
    attr_accessible :github_id, :email, :name, :token
    before_create :generate_api_credentials
+   has_many :git_commits
 
 
    private

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120630211101) do
+ActiveRecord::Schema.define(:version => 20120701012512) do
 
   create_table "animated_gifs", :force => true do |t|
     t.string   "image"
@@ -27,11 +27,13 @@ ActiveRecord::Schema.define(:version => 20120630211101) do
     t.string   "email"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "user_id"
   end
 
   add_index "git_commits", ["email"], :name => "index_git_commits_on_email"
   add_index "git_commits", ["repo", "sha"], :name => "index_git_commits_on_repo_and_sha"
   add_index "git_commits", ["sha"], :name => "index_git_commits_on_sha"
+  add_index "git_commits", ["user_id"], :name => "index_git_commits_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"

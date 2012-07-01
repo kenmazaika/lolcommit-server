@@ -5,5 +5,6 @@ class GitCommit < ActiveRecord::Base
   validates :sha,  :presence => true
 
   mount_uploader :image, ImageUploader
+  belongs_to :user
   
 end

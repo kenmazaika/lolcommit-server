@@ -9,3 +9,9 @@ class ActiveSupport::TestCase
     AnimatedGif.any_instance.expects(:store_animation).at_least(0)
   end
 end
+
+class ActionController::TestCase
+  def sign_in(user)
+    session[:user_id] = user.id
+  end
+end

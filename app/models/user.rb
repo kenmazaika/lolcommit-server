@@ -1,3 +1,3 @@
 class User < ActiveRecord::Base
-  # attr_accessible :title, :body
+   attr_accessible :github_id, :email, :name, :token
 end

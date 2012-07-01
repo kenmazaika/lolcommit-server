@@ -8,4 +8,10 @@ FactoryGirl.define do
     repo  "lolcommit-server"
   end
 
+  factory :user do
+    name "kenmazaika"
+    sequence(:github_id) {|n| n }
+    sequence(:email) {|n| "kenmazaika#{n}@gmail.com" }
+    token { UUID.generate(:compact) }
+  end
 end

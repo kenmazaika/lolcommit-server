@@ -39,6 +39,8 @@ group :test do
   gem 'mocha', :require => false
   gem 'fakeweb'
   gem 'factory_girl_rails'
+  gem 'shoulda'
+  gem 'shoulda-matchers'
 end
 
 gem 'jquery-rails'

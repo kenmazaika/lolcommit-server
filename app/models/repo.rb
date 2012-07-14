@@ -4,6 +4,7 @@ class Repo < ActiveRecord::Base
   has_many :git_commits
 
   after_initialize :generate_external_id
+  validates :name, :presence => true, :uniqueness => true
 
   private
   def generate_external_id

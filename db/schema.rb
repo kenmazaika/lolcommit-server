@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120714195350) do
+ActiveRecord::Schema.define(:version => 20120714222426) do
 
   create_table "animated_gifs", :force => true do |t|
     t.string   "image"
@@ -40,10 +40,12 @@ ActiveRecord::Schema.define(:version => 20120714195350) do
   create_table "repos", :force => true do |t|
     t.string   "username"
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "external_id"
   end
 
+  add_index "repos", ["external_id"], :name => "index_repos_on_external_id"
   add_index "repos", ["username", "name"], :name => "index_repos_on_username_and_name"
 
   create_table "repos_users", :id => false, :force => true do |t|

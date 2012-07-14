@@ -5,7 +5,6 @@ FactoryGirl.define do
     sha { Digest::SHA1.hexdigest(UUID.generate(:compact)) }
     email "kenmazaika@gmail.com"
     image "omgimage"
-    repo  "lolcommit-server"
   end
 
   factory :user do
@@ -13,5 +12,10 @@ FactoryGirl.define do
     sequence(:github_id) {|n| n }
     sequence(:email) {|n| "kenmazaika#{n}@gmail.com" }
     token { UUID.generate(:compact) }
+  end
+
+  factory :repo do
+    name { UUID.generate(:compact) }
+    external_id { UUID.generate(:compact) }
   end
 end

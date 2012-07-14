@@ -163,6 +163,7 @@ GEM
     simple_form (2.0.2)
       actionpack (~> 3.0)
       activemodel (~> 3.0)
+    spin (0.4.6)
     sprockets (2.1.3)
       hike (~> 1.2)
       rack (~> 1.0)
@@ -202,6 +203,7 @@ DEPENDENCIES
   rmagick (= 2.12.0)
   sass-rails (~> 3.2.3)
   simple_form
+  spin
   sqlite3
   uglifier (>= 1.0.3)
   uuid

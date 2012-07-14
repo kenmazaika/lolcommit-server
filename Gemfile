@@ -35,6 +35,7 @@ group :assets do
 end
 
 group :test do
+  gem 'spin'
   gem 'mocha', :require => false
   gem 'fakeweb'
   gem 'factory_girl_rails'

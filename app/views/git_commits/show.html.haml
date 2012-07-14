@@ -1,3 +1,7 @@
 %h2= current_git_commit.sha
 %h4= current_git_commit.repo
 = image_tag current_git_commit.image
+
+-unless current_git_commit.raw.to_s.blank?
+  = link_to current_git_commit.raw.to_s do
+    = image_tag current_git_commit.raw, :style => 'width: 64px;height: 48px;'

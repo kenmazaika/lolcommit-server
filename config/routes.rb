@@ -6,6 +6,5 @@ LolcommitServer::Application.routes.draw do
   match '/auth/github', :as => 'auth_github'
   resource :sessions, :only => [:destroy]
 
-  root :to => "git_commits#new"
-
+  root :to => "main#index"
 end

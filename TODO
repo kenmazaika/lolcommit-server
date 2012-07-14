@@ -1,0 +1,3 @@
+* Patch lolcommits gem to post with api credentials
+* Make repo object, and tie commits to them on creation
+* Make a listing of commits by user and a listing of commits by repo

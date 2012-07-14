@@ -1,0 +1,7 @@
+- if current_user.blank?
+  = link_to 'Login', auth_github_path
+- else
+  %br
+  =current_user.api_key
+  %br
+  = current_user.api_secret

@@ -34,6 +34,11 @@ class ApplicationControllerTest < ActionController::TestCase
     assert_redirected_to auth_github_url
   end
 
+  test "require_current_user json" do
+    get :get_current_user, :format => :json
+    assert_response :unauthorized
+  end
+
   test "api credentials not good" do
     user = FactoryGirl.create(:user) 
     get :get_current_user, :key => user.api_key,

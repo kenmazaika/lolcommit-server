@@ -17,7 +17,8 @@ class ApplicationController < ActionController::Base
   end
 
   def require_current_user
-    redirect_to auth_github_url if current_user.blank?
+    redirect_to auth_github_url if current_user.blank? && params[:format] != 'json'
+    render :json => {:error => "Invalid Authentication"}, :status => :unauthorized if current_user.blank? && params[:format] == 'json'
   end
 
   helper_method :current_user

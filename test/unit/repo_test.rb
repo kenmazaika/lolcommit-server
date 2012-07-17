@@ -11,6 +11,7 @@ class RepoTest < ActiveSupport::TestCase
     assert repo2.invalid?
     assert ! repo2.errors[:name].blank?
   end
+
   test "before_create generate an external_id" do
     repo = Repo.new(:name => 'omg')
     assert_not_nil repo.external_id

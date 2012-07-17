@@ -49,4 +49,11 @@ class ReposControllerTest < ActionController::TestCase
     get :show, :id => repo.id
     assert_response :success
   end
+
+  test "show works logged out too" do
+    repo = FactoryGirl.create(:repo)
+    get :show, :id => repo.id
+    assert_response :success
+  end
+
 end

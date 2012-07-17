@@ -92,4 +92,5 @@ class GitCommitsControllerTest < ActionController::TestCase
     assert_equal [gc1.id, gc2.id].sort, ActiveSupport::JSON.decode(@response.body).collect{|gc| gc['id'] }.sort
   end
 
+
 end

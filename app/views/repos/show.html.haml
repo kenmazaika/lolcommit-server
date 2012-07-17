@@ -1,0 +1,9 @@
+%h2= current_repo.name
+
+.attributes
+  External Id:
+  = current_repo.external_id
+
+.users
+  Users:
+  = current_repo.users.collect {|u| u.name}.join(',')

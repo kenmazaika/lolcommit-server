@@ -36,4 +36,17 @@ class ReposControllerTest < ActionController::TestCase
     assert_equal [user], repo.users
     assert_not_nil repo.external_id
   end
+
+  test "show not found" do
+    sign_in FactoryGirl.create(:user)
+    get :show, :id => 'omg'
+    assert_response :not_found
+  end
+
+  test "show success" do
+    sign_in FactoryGirl.create(:user)
+    repo = FactoryGirl.create(:repo)
+    get :show, :id => repo.id
+    assert_response :success
+  end
 end

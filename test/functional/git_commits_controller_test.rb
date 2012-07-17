@@ -27,28 +27,44 @@ class GitCommitsControllerTest < ActionController::TestCase
   test "create success json" do
     user = FactoryGirl.create(:user)
     sign_in user
+    repo = FactoryGirl.create(:repo, :external_id => 'omg')
     assert_difference 'GitCommit.count' do
       post :create, :git_commit => {
         :sha => 'sss',
-        :repo => 'omg'
+        :repo_external_id => 'omg'
       }, :format => :json
     end
     gc = GitCommit.last
     assert_response :success
     assert_equal gc.id, json_resp['id']
     assert_equal user.id, json_resp['user_id']
+    assert_equal repo, gc.repo
   end
 
   test "create success" do
     sign_in FactoryGirl.create(:user)
+    repo = FactoryGirl.create(:repo, :external_id => 'omg')
     assert_difference 'GitCommit.count' do
       post :create, :git_commit => {
         :sha => 'sss',
-        :repo => 'omg'
+        :repo_external_id => 'omg'
       }
     end
     gc = GitCommit.last
+    assert_equal repo, gc.repo
     assert_redirected_to git_commit_path(gc)
+  end
+
+  test "create pass invalid repo_id" do
+    sign_in FactoryGirl.create(:user)
+    repo = FactoryGirl.create(:repo, :external_id => 'omg')
+    assert_no_difference 'GitCommit.count' do
+      post :create, :git_commit => {
+        :sha => 'sss',
+        :repo_external_id => 'lol'
+      }
+    end
+    assert_response :not_found
   end
 
   test "show not found" do

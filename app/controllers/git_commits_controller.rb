@@ -1,6 +1,7 @@
 class GitCommitsController < ApplicationController
   before_filter :require_current_git_commit, :only => [:show]
   before_filter :require_current_user, :only => [:new, :create]
+  before_filter :require_repo_if_repo_external_id_passed, :only => [:create]
 
   def new
     @git_commit = GitCommit.new
@@ -48,5 +49,13 @@ class GitCommitsController < ApplicationController
 
   def require_current_git_commit
     head :not_found unless current_git_commit
+  end
+
+  def require_repo_if_repo_external_id_passed
+    if params[:git_commit] && params[:git_commit][:repo_external_id]
+      external_id = params[:git_commit][:repo_external_id]
+      repo = Repo.find_by_external_id(external_id)
+      head :not_found unless repo
+    end
   end
 end

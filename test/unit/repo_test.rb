@@ -16,4 +16,5 @@ class RepoTest < ActiveSupport::TestCase
     repo = Repo.new(:name => 'omg')
     assert_not_nil repo.external_id
   end
+
 end

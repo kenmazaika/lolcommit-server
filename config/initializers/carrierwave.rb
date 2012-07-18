@@ -5,7 +5,5 @@ CarrierWave.configure do |config|
     :aws_secret_access_key  => ENV['S3_SECRET'],       # required
   }
 
-  # TODO: point to a different bucket
-  config.fog_directory  = 'ken-mazaika-music-dev'                     # required
-  
+  config.fog_directory  = ENV['S3_BUCKET']
 end

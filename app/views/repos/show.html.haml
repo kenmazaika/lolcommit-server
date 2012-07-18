@@ -13,7 +13,7 @@
   = current_repo.users.collect {|u| u.name}.join(',')
 
 .commits
-  - current_repo.git_commits.limit(15).each do |gc|
+  - @git_commits.each do |gc|
     .image
       - if gc.user
         .name
@@ -22,3 +22,4 @@
         = image_tag gc.image
       - else
         = image_tag gc.raw
+= will_paginate @git_commits

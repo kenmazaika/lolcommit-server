@@ -18,6 +18,7 @@ class ReposController < ApplicationController
   end
 
   def show
+    @git_commits = current_repo.git_commits.paginate(:page => params[:page] || 1)
   end
 
   private

@@ -8,6 +8,7 @@ class GitCommit < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :repo
+  self.per_page = 10
 
   def repo_external_id=(external_id)
     repo = Repo.find_by_external_id(external_id)

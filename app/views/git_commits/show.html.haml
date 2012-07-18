@@ -1,7 +1,17 @@
 %h2= current_git_commit.sha
-%h4= current_git_commit.repo
-= image_tag current_git_commit.image
+- if current_git_commit.repo
+  %h4= link_to current_git_commit.repo.name, repo_path(current_git_commit.repo)
 
--unless current_git_commit.raw.to_s.blank?
-  = link_to current_git_commit.raw.to_s do
-    = image_tag current_git_commit.raw, :style => 'width: 64px;height: 48px;'
+-if current_git_commit.user
+  %b= link_to current_git_commit.user.name, "http://github.com/#{current_git_commit.user.name}"
+
+- if current_user && current_git_commit.repo.users.include?(current_user)
+
+  = image_tag current_git_commit.image
+
+  -unless current_git_commit.raw.to_s.blank?
+    = link_to current_git_commit.raw.to_s do
+      = image_tag current_git_commit.raw, :style => 'width: 64px;height: 48px;'
+- else
+  = image_tag current_git_commit.raw
+  

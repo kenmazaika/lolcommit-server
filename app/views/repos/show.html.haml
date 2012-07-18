@@ -1,8 +1,12 @@
 %h2= current_repo.name
 
-.attributes
-  External Id:
-  = current_repo.external_id
+- if current_user && current_user.repos.include?(current_repo)
+  .warning
+    %b keep the external_id safe.  anyone who knows this key can join your repo.
+  %br
+  .attributes
+    %b External Id:
+    = current_repo.external_id
 
 .users
   Users:

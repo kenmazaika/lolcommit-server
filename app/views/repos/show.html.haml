@@ -1,16 +1,17 @@
 %h2= current_repo.name
 
 - if current_user && current_user.repos.include?(current_repo)
-  .warning
-    %b keep the external_id safe.  anyone who knows this key can join your repo.
-  %br
-  .attributes
-    %b External Id:
-    = current_repo.external_id
-
+  .row
+    .span8
+      .well
+        Keep your external id secure.  Anyone who knows this key can join your lolcommit repo.
+        %br
+        %b External Id:
+        = current_repo.external_id
+        %br
+        %b Users:
+        = current_repo.users.collect {|u| u.name}.join(',')
 .users
-  Users:
-  = current_repo.users.collect {|u| u.name}.join(',')
 
 .commits
   - @git_commits.each do |gc|

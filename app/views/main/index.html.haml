@@ -1,14 +1,5 @@
 - if current_user.blank?
   = link_to 'Login', auth_github_path
-- else
-  %br
-  Your API Key:
-  =current_user.api_key
-  %br
-  Your API Secret:
-  = current_user.api_secret
-
-
 %h2 
   Get Started
 %ol

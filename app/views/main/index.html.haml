@@ -8,11 +8,6 @@
   Your API Secret:
   = current_user.api_secret
 
-  -if current_user && ! current_user.repos.blank?
-    %h2 Your Repos
-    -current_user.repos.each do |repo|
-      = link_to repo.name, repo_path(repo)
-
 
 %h2 
   Get Started
@@ -25,11 +20,8 @@
   %li 
     Install fork of lolcommits:
     %pre
-      %br
-      gem uninstall lolcommits
-      %br
+      &nbsp;   gem uninstall lolcommits
       ="curl -O http://#{request.host}:#{request.port}/lolcommits-0.1.5.dotcom.gem"
-      %br
       gem install lolcommits-0.1.5.dotcom.gem
   %li
     =link_to 'Create a new repo', new_repo_path
@@ -37,38 +29,18 @@
   %li 
     Enable lolcommits
     %pre
-      %br
-      cd &lt;repo directory&gt;
-      %br
+      &nbsp;   cd &lt;repo directory&gt;
       lolcommits --enable
 
   %li
     Configure lolcommits.com in the gem.
     %pre
-      %br
-      lolcommits --configure --plugin dot_com
-      %br
+      
+      &nbsp;   lolcommits --configure --plugin dot_com
       enabled: &lt;true&gt;
-      %br
       ="api_key: <your user's api key> #{current_user.blank? ? '' : "value: [#{current_user.api_key}]"}"
-      %br
       ="api_secret: <your user's secret api key> #{current_user.blank? ? '' : "value: [#{current_user.api_secret}]"}"
 
-      %br
       repo_id: &lt;Repo External ID&gt;
-      %br
   %li Smile for the camera when you make commits.
 
-
-Forked from 
-=link_to 'lolcommits', 'https://github.com/mroth/lolcommits'
-
-%br
-To contribute, make patches to
-=link_to 'lolcommits.com fork', 'https://github.com/kenmazaika/lolcommits/tree/dot_com'
-or to the
-=link_to 'lolcommit-server', 'https://github.com/kenmazaika/lolcommit-server'
-
-%br
-To add a feature request, or a question about this server open an issue:
-= link_to 'here', 'https://github.com/kenmazaika/lolcommit-server/issues'

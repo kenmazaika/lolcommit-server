@@ -14,6 +14,8 @@ gem 'httparty'
 gem 'omniauth-github'
 gem 'github_api'
 gem 'will_paginate'
+gem 'bootstrap-will_paginate'
+
 
 group :production do
   gem 'activerecord-postgresql-adapter'

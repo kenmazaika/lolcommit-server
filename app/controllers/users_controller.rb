@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :require_current_user, :except => :show
-  before_filter :require_selected_user, :only => :show
+  before_filter :require_selected_user, :only => [:show]
 
   def account
   end

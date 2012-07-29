@@ -20,7 +20,7 @@
   %li 
     Install fork of lolcommits:
     %pre
-      &nbsp;   gem uninstall lolcommits
+      gem uninstall lolcommits
       ="curl -O http://#{request.host}:#{request.port}/lolcommits-0.1.5.dotcom.gem"
       gem install lolcommits-0.1.5.dotcom.gem
   %li
@@ -29,14 +29,14 @@
   %li 
     Enable lolcommits
     %pre
-      &nbsp;   cd &lt;repo directory&gt;
+      cd &lt;repo directory&gt;
       lolcommits --enable
 
   %li
     Configure lolcommits.com in the gem.
     %pre
       
-      &nbsp;   lolcommits --configure --plugin dot_com
+      lolcommits --configure --plugin dot_com
       enabled: &lt;true&gt;
       ="api_key: <your user's api key> #{current_user.blank? ? '' : "value: [#{current_user.api_key}]"}"
       ="api_secret: <your user's secret api key> #{current_user.blank? ? '' : "value: [#{current_user.api_secret}]"}"

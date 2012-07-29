@@ -16,11 +16,5 @@
 .commits
   - @git_commits.each do |gc|
     .image
-      - if gc.user
-        .name
-          %b= link_to gc.user.name, "http://github.com/#{gc.user.name}"
-      - if current_user && gc.image && gc.repo.users.include?(current_user)
-        = image_tag gc.image
-      - else
-        = image_tag gc.raw
+      = render gc, :show_repo => false, :show_name => true
 = will_paginate @git_commits

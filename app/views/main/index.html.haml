@@ -9,11 +9,10 @@
     %li Sign up for an Account
 
   %li 
-    Install fork of lolcommits:
+    Install latest version of lolcommits:
     %pre
       gem uninstall lolcommits
-      ="curl -O http://#{request.host}:#{request.port}/lolcommits-0.1.5.dotcom.gem"
-      gem install lolcommits-0.1.5.dotcom.gem
+      gem install lolcommits --pre
   %li
     =link_to 'Create a new repo', new_repo_path
     or have a collaborator on your repo give you the repo_external_id for the project they have configured.  This will be a UUID.

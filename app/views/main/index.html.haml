@@ -12,7 +12,7 @@
     Install latest version of lolcommits:
     %pre
       gem uninstall lolcommits
-      gem install lolcommits --pre
+      gem install lolcommits
   %li
     =link_to 'Create a new repo', new_repo_path
     or have a collaborator on your repo give you the repo_external_id for the project they have configured.  This will be a UUID.
@@ -26,7 +26,7 @@
     Configure lolcommits.com in the gem.
     %pre
       
-      lolcommits --configure --plugin dot_com
+      lolcommits --config --plugin dot_com
       enabled: &lt;true&gt;
       ="api_key: <your user's api key> #{current_user.blank? ? '' : "value: [#{current_user.api_key}]"}"
       ="api_secret: <your user's secret api key> #{current_user.blank? ? '' : "value: [#{current_user.api_secret}]"}"

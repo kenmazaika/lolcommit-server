@@ -56,4 +56,41 @@ class ReposControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "show index" do
+    sign_in FactoryGirl.create(:user)
+    repo = FactoryGirl.create(:repo)
+    FactoryGirl.create(:git_commit, :repo=> repo)
+    
+    get :index, :format => :json
+
+    assert_response :success
+    assert_equal repo.external_id, json_resp.first['external_id']
+    assert_equal repo.id, json_resp.first['id']
+    assert_equal repo.name, json_resp.first['name']
+    assert_equal repo.username, json_resp.first['username']
+    assert_equal repo.git_commits.first.sha, json_resp.first['git_commits'].first['sha']
+  end
+
+  test "show index with filter" do
+    sign_in FactoryGirl.create(:user)
+    repo_a = FactoryGirl.create(:repo, :name => 'a')
+    repo_b = FactoryGirl.create(:repo, :name => 'b')
+    repo_c = FactoryGirl.create(:repo, :name => 'c')
+
+    get :index, :format => :json, :repos => ['a', 'c']
+
+    assert_response :success
+    assert_equal 2, json_resp.length
+
+    assert_equal repo_a.external_id, json_resp.first['external_id']
+    assert_equal repo_a.id, json_resp.first['id']
+    assert_equal repo_a.name, json_resp.first['name']
+    assert_equal repo_a.username, json_resp.first['username']
+
+    assert_equal repo_c.external_id, json_resp.last['external_id']
+    assert_equal repo_c.id, json_resp.last['id']
+    assert_equal repo_c.name, json_resp.last['name']
+    assert_equal repo_c.username, json_resp.last['username']
+  end
+
 end

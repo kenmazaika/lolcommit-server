@@ -9,7 +9,7 @@ group :development, :test do
 end
 gem 'heroku'
 gem 'uuid'
-gem "rmagick", "2.12.0", :require => 'RMagick'
+gem "rmagick", "2.13.2", :require => 'RMagick'
 gem 'httparty'
 gem 'omniauth-github'
 gem 'github_api'

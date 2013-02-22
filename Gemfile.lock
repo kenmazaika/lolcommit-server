@@ -154,7 +154,7 @@ GEM
       json (~> 1.4)
     rest-client (1.6.7)
       mime-types (>= 1.16)
-    rmagick (2.12.0)
+    rmagick (2.13.2)
     ruby-hmac (0.4.0)
     rubyzip (0.9.7)
     sass (3.1.19)
@@ -207,7 +207,7 @@ DEPENDENCIES
   mocha
   omniauth-github
   rails (= 3.2.3)
-  rmagick (= 2.12.0)
+  rmagick (= 2.13.2)
   sass-rails (~> 3.2.3)
   shoulda
   shoulda-matchers

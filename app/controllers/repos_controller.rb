@@ -22,10 +22,10 @@ class ReposController < ApplicationController
   end
 
   def index
-    @repos = Repo.all
-
     if params[:repos]
-      @repos = @repos.collect{|x| params[:repos].include?(x.name) ? x : nil}.compact
+      @repos = Repo.where(:name => params[:repos])
+    else
+      @repos = Repo.all
     end
 
     respond_to do |format|

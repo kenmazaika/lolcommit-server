@@ -1,5 +1,5 @@
 class ReposController < ApplicationController
-  before_filter :require_current_user, :except => [:show]
+  before_filter :require_current_user, :except => [:show, :index]
   before_filter :require_current_repo, :only => :show
 
   def new

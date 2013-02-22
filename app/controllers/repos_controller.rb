@@ -21,6 +21,18 @@ class ReposController < ApplicationController
     @git_commits = current_repo.git_commits.order("id DESC").paginate(:page => params[:page] || 1)
   end
 
+  def index
+    @repos = Repo.all
+
+    if params[:repos]
+      @repos = @repos.collect{|x| params[:repos].include?(x.name) ? x : nil}.compact
+    end
+
+    respond_to do |format|
+        format.json { render json: @repos}
+    end
+  end
+
   private
   helper_method :current_repo
   def current_repo

@@ -6,4 +6,13 @@ class UserTest < ActiveSupport::TestCase
     assert_not_nil u.api_key
     assert_not_nil u.api_secret
   end
+
+  test "as_json doesn't return api info" do
+    u = FactoryGirl.create(:user)
+    json = u.as_json()
+
+    assert_not_nil json["id"]
+    assert_nil json["api_key"]
+    assert_nil json["api_secret"]
+  end
 end

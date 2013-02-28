@@ -6,7 +6,12 @@ class UsersController < ApplicationController
   end
 
   def show
-    @commits = selected_user.git_commits.order("id DESC").paginate(:page => params[:page] || 1)
+    respond_to do |format|
+        format.json { render json: selected_user}
+        format.html {
+          @commits = selected_user.git_commits.order("id DESC").paginate(:page => params[:page] || 1)
+        }
+    end
   end
 
   private

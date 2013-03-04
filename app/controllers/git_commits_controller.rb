@@ -41,6 +41,13 @@ class GitCommitsController < ApplicationController
     render :json => commits
   end
 
+  def latest_commits
+    limit = params[:limit] ||= 5
+
+    commits = GitCommit.order("created_at DESC").limit(limit)
+    render :json => commits
+  end
+
   private
   helper_method :current_git_commit
   def current_git_commit

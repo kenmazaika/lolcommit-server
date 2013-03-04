@@ -1,5 +1,8 @@
 LolcommitServer::Application.routes.draw do
-  resources :git_commits
+  resources :git_commits do
+      get :latest_commits, on: :collection
+  end
+
   resources :animated_gifs, :only => :create
   resources :repos
 
@@ -10,7 +13,6 @@ LolcommitServer::Application.routes.draw do
     get 'account'
   end
   resources :users, :only => :show
-
 
   root :to => "main#index"
 end

@@ -92,5 +92,23 @@ class GitCommitsControllerTest < ActionController::TestCase
     assert_equal [gc1.id, gc2.id].sort, ActiveSupport::JSON.decode(@response.body).collect{|gc| gc['id'] }.sort
   end
 
+  test "latest_commits" do
+    gc = []
+    10.times do |x|
+      gc[x] = FactoryGirl.create(:git_commit, :created_at => Time.now + x.day)
+    end
+
+    get :latest_commits
+    response = ActiveSupport::JSON.decode(@response.body)
+    assert_equal 5, response.length
+    assert response.collect{|x| x['id']}.include?(gc[5].id)
+    assert response.collect{|x| x['id']}.include?(gc[9].id)
+
+    get :latest_commits, :limit => 3
+    response = ActiveSupport::JSON.decode(@response.body)
+    assert_equal 3, response.length
+    assert response.collect{|x| x['id']}.include?(gc[7].id)
+    assert response.collect{|x| x['id']}.include?(gc[9].id)
+  end
 
 end

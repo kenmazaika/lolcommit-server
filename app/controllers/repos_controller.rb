@@ -18,7 +18,12 @@ class ReposController < ApplicationController
   end
 
   def show
-    @git_commits = current_repo.git_commits.order("id DESC").paginate(:page => params[:page] || 1)
+    respond_to do |format|
+        format.json { render json: current_repo }
+        format.html {
+          @git_commits = current_repo.git_commits.order("id DESC").paginate(:page => params[:page] || 1)
+        }
+    end
   end
 
   def index

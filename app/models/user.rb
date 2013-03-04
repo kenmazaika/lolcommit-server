@@ -4,9 +4,8 @@ class User < ActiveRecord::Base
   has_many :git_commits
   has_and_belongs_to_many :repos
 
-  def as_json(*args)
-    hash = super(*args)
-    hash.slice!("api_key", "api_secret")
+  def as_json(options={})
+    super(options).slice!("api_key", "api_secret")
   end
 
   private

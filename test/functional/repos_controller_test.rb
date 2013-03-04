@@ -68,7 +68,6 @@ class ReposControllerTest < ActionController::TestCase
     assert_equal repo.id, json_resp.first['id']
     assert_equal repo.name, json_resp.first['name']
     assert_equal repo.username, json_resp.first['username']
-    assert_equal repo.git_commits.first.sha, json_resp.first['git_commits'].first['sha']
   end
 
   test "show index with filter" do

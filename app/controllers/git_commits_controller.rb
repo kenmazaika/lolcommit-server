@@ -44,7 +44,8 @@ class GitCommitsController < ApplicationController
   def latest_commits
     limit = params[:limit] ||= 5
 
-    commits = GitCommit.order("created_at DESC").limit(limit)
+    commits = params[:user_ids] ? GitCommit.where(:user_id => params[:user_ids]) : GitCommit
+    commits = commits.order("created_at DESC").limit(limit)
     render :json => commits
   end
 

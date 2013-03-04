@@ -111,4 +111,21 @@ class GitCommitsControllerTest < ActionController::TestCase
     assert response.collect{|x| x['id']}.include?(gc[9].id)
   end
 
+  test "user filtered latest_commits" do
+    gc = []
+    10.times do |x|
+      user_id = x.even? ? 1 : 2
+      gc[x] = FactoryGirl.create(:git_commit, :user_id => user_id, :created_at => Time.now + x.day)
+    end
+
+    get :latest_commits, :user_ids => [1]
+    response = ActiveSupport::JSON.decode(@response.body)
+    assert_equal 5, response.length
+    assert response.collect{|x| x['id']}.include?(gc[0].id)
+    assert response.collect{|x| x['id']}.include?(gc[2].id)
+    assert response.collect{|x| x['id']}.include?(gc[4].id)
+    assert response.collect{|x| x['id']}.include?(gc[6].id)
+    assert response.collect{|x| x['id']}.include?(gc[8].id)
+  end
+
 end

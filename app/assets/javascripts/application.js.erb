@@ -31,6 +31,6 @@ new Firehose.Consumer({
   },
   // Note that we do NOT specify a protocol here because we don't
   // know that yet.
-  uri: '//localhost:7474/'
+  uri: '<%= Rails.application.config.firehose['socket'] %>'
 }).connect();
 

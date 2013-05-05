@@ -28,6 +28,7 @@ gem 'bootstrap-will_paginate'
 
 group :production do
   gem 'activerecord-postgresql-adapter'
+  gem 'newrelic_rpm'
 end
 gem 'fog'
 gem 'haml'

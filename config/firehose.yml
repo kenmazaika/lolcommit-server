@@ -6,5 +6,5 @@ test:
   socket: //localhost:7474/
 
 production:
-  url: http://firehose.lolcommits.com
-  socket: //firehose.lolcommits.com
+  url: http://firehose.lolcommits.com:7474
+  socket: //firehose.lolcommits.com:7474

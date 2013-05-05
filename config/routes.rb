@@ -6,8 +6,9 @@ LolcommitServer::Application.routes.draw do
   resources :animated_gifs, :only => :create
   resources :repos
 
-  match '/auth/:provider/callback', :to => 'sessions#create', :as => 'auth_callback'
-  match '/auth/github', :as => 'auth_github'
+  get  '/auth/:provider/callback', :to => 'sessions#create', :as => 'auth_callback'
+  post '/auth/:provider/callback', :to => 'sessions#create'
+  get  '/auth/github', :as => 'auth_github'
   resource :sessions, :only => [:destroy]
   resource :users, :only => [] do
     get 'account'

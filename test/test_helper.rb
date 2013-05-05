@@ -2,7 +2,7 @@ ENV["RAILS_ENV"] = "test"
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 FakeWeb.allow_net_connect = false
-require 'mocha'
+require 'mocha/setup'
 
 class ActiveSupport::TestCase
   setup do
@@ -22,7 +22,7 @@ class ActionController::TestCase
       _routes.clear!
       Rails.application.routes_reloader.paths.each{ |path| load(path) }
       _routes.draw do
-        match '/:controller(/:action(/:id))'
+        match '/:controller(/:action(/:id))', via: [:get, :post]
       end
       ActiveSupport.on_load(:action_controller) { _routes.finalize! }
     ensure

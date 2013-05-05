@@ -6,7 +6,7 @@ if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
   Bundler.require(*Rails.groups(:assets => %w(development test)))
   # If you want your assets lazily compiled in production, use this line
-  # Bundler.require(:default, :assets, Rails.env)
+  Bundler.require(:default, :assets, Rails.env)
 end
 
 module LolcommitServer
@@ -55,5 +55,7 @@ module LolcommitServer
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    config.firehose = YAML.load_file(Rails.root.join("config", "firehose.yml"))[Rails.env.to_s]
   end
 end

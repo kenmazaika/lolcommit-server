@@ -7,4 +7,4 @@ test:
 
 production:
   url: http://ken.ht:7474
-  socket: http://ken.ht:7474/
+  socket: //ken.ht:7474/

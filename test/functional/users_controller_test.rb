@@ -23,6 +23,14 @@ class UsersControllerTest < ActionController::TestCase
     assert_equal user2.id, assigns[:selected_user].id
   end
 
+  test "show json by handle" do
+    sign_in FactoryGirl.create(:user)
+    user2 = FactoryGirl.create(:user, :name => 'yologuy')
+    get :show, :id => user2.name, :format => :json
+    assert_response :success
+    assert_equal user2.id, assigns[:selected_user].id
+  end
+
   test "show not found" do
     sign_in FactoryGirl.create(:user)
     get :show, :id => 'omgomg'

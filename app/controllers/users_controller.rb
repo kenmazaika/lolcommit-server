@@ -17,7 +17,13 @@ class UsersController < ApplicationController
   private
   helper_method :selected_user
   def selected_user
-    @selected_user ||= User.find_by_id(params[:id])
+    if params[:id].nil?
+      nil
+    elsif params[:id].match(/\A\d*\Z/)
+      @selected_user ||= User.find_by_id(params[:id])
+    else
+      @selected_user ||= User.find_by_name(params[:id])
+    end
   end
 
   def require_selected_user

@@ -3,6 +3,8 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 FakeWeb.allow_net_connect = false
 require 'mocha/setup'
+require 'shoulda'
+require 'shoulda/matchers'
 
 class ActiveSupport::TestCase
   setup do
@@ -32,10 +34,10 @@ class ActionController::TestCase
 
   def teardown_bogus_controller_routes!
     Rails.application.reload_routes!
-  end 
+  end
 
   def json_resp
     ActiveSupport::JSON.decode(@response.body)
   end
-  
+
 end

@@ -1,5 +1,5 @@
 ruby '2.0.0'
-source 'https://rubygems.org' 
+source 'https://rubygems.org'
 
 
 gem 'rails', '4.0.0.rc1'
@@ -43,8 +43,8 @@ group :test do
   gem 'mocha', :require => false
   gem 'fakeweb'
   gem 'factory_girl_rails'
-  gem 'shoulda'
-  gem 'shoulda-matchers'
+  gem 'shoulda', :require => false
+  gem 'shoulda-matchers', :require => false
 end
 
 gem 'jquery-rails'

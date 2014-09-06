@@ -220,7 +220,6 @@ GEM
       activesupport (>= 3.0)
       sprockets (~> 2.8)
     systemu (2.5.2)
-    test-unit (2.0.0.0)
     therubyracer (0.11.4)
       libv8 (~> 3.11.8.12)
       ref
@@ -271,7 +270,6 @@ DEPENDENCIES
   simple_form
   spin
   sprockets-rails
-  test-unit
   therubyracer
   uuid
   will_paginate

@@ -5,7 +5,4 @@
         %b= link_to git_commit.user.name, user_path(git_commit.user)
       - if show_repo && git_commit.repo
         %b= link_to git_commit.repo.name, repo_path(git_commit.repo)
-  - if current_user && git_commit.image && git_commit.repo && git_commit.repo.users.include?(current_user)
-    = image_tag git_commit.image
-  - else
-    = image_tag git_commit.raw
+  = image_tag git_commit.image

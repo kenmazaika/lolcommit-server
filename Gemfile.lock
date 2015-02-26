@@ -1,39 +1,33 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    actionmailer (4.0.0.rc1)
-      actionpack (= 4.0.0.rc1)
-      mail (~> 2.5.3)
-    actionpack (4.0.0.rc1)
-      activesupport (= 4.0.0.rc1)
+    CFPropertyList (2.3.0)
+    actionmailer (4.0.13)
+      actionpack (= 4.0.13)
+      mail (~> 2.5, >= 2.5.4)
+    actionpack (4.0.13)
+      activesupport (= 4.0.13)
       builder (~> 3.1.0)
       erubis (~> 2.7.0)
       rack (~> 1.5.2)
       rack-test (~> 0.6.2)
-    activemodel (4.0.0.rc1)
-      activesupport (= 4.0.0.rc1)
+    activemodel (4.0.13)
+      activesupport (= 4.0.13)
       builder (~> 3.1.0)
-    activerecord (4.0.0.rc1)
-      activemodel (= 4.0.0.rc1)
+    activerecord (4.0.13)
+      activemodel (= 4.0.13)
       activerecord-deprecated_finders (~> 1.0.2)
-      activesupport (= 4.0.0.rc1)
+      activesupport (= 4.0.13)
       arel (~> 4.0.0)
-    activerecord-deprecated_finders (1.0.2)
-    activerecord-postgresql-adapter (0.0.1)
-      pg
-    activesupport (4.0.0.rc1)
-      i18n (~> 0.6, >= 0.6.4)
+    activerecord-deprecated_finders (1.0.3)
+    activesupport (4.0.13)
+      i18n (~> 0.6, >= 0.6.9)
       minitest (~> 4.2)
       multi_json (~> 1.3)
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
-    addressable (2.3.4)
-    arel (4.0.0)
-    atomic (1.1.8)
-    autoparse (0.3.3)
-      addressable (>= 2.3.1)
-      extlib (>= 0.9.15)
-      multi_json (>= 1.0.0)
+    addressable (2.3.7)
+    arel (4.0.2)
     bootstrap-will_paginate (0.0.9)
       will_paginate
     builder (3.1.4)
@@ -45,6 +39,7 @@ GEM
       execjs
     coffee-script-source (1.6.2)
     cookiejar (0.3.0)
+    dotenv (1.0.2)
     em-hiredis (0.2.1)
       hiredis (~> 0.4.0)
     em-http-request (1.0.3)
@@ -56,19 +51,18 @@ GEM
     em-socksify (0.2.1)
       eventmachine (>= 1.0.0.beta.4)
     erubis (2.7.0)
-    eventmachine (1.0.3)
-    excon (0.21.0)
+    eventmachine (1.0.7)
+    excon (0.44.3)
     execjs (1.4.0)
       multi_json (~> 1.0)
-    extlib (0.9.16)
     factory_girl (4.2.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.2.1)
       factory_girl (~> 4.2.0)
       railties (>= 3.0.0)
     fakeweb (1.3.0)
-    faraday (0.8.7)
-      multipart-post (~> 1.1)
+    faraday (0.8.9)
+      multipart-post (~> 1.2.0)
     faye-websocket (0.4.7)
       eventmachine (>= 0.12.0)
     firehose (1.2.3)
@@ -79,80 +73,134 @@ GEM
       faye-websocket
       json
       thor
-    fog (1.11.0)
+    fission (0.5.0)
+      CFPropertyList (~> 2.2)
+    fog (1.28.0)
+      fog-atmos
+      fog-aws (~> 0.0)
+      fog-brightbox (~> 0.4)
+      fog-core (~> 1.27, >= 1.27.3)
+      fog-ecloud
+      fog-json
+      fog-profitbricks
+      fog-radosgw (>= 0.0.2)
+      fog-riakcs
+      fog-sakuracloud (>= 0.0.4)
+      fog-serverlove
+      fog-softlayer
+      fog-storm_on_demand
+      fog-terremark
+      fog-vmfusion
+      fog-voxel
+      fog-xml (~> 0.1.1)
+      ipaddress (~> 0.5)
+      nokogiri (~> 1.5, >= 1.5.11)
+    fog-atmos (0.1.0)
+      fog-core
+      fog-xml
+    fog-aws (0.1.1)
+      fog-core (~> 1.27)
+      fog-json (~> 1.0)
+      fog-xml (~> 0.1)
+      ipaddress (~> 0.8)
+    fog-brightbox (0.7.1)
+      fog-core (~> 1.22)
+      fog-json
+      inflecto (~> 0.0.2)
+    fog-core (1.29.0)
       builder
-      excon (~> 0.20)
-      formatador (~> 0.2.0)
-      google-api-client (~> 0.6.2)
-      json (~> 1.7)
+      excon (~> 0.38)
+      formatador (~> 0.2)
       mime-types
       net-scp (~> 1.1)
       net-ssh (>= 2.1.3)
-      nokogiri (~> 1.5.0)
-      ruby-hmac
-    formatador (0.2.4)
+    fog-ecloud (0.0.2)
+      fog-core
+      fog-xml
+    fog-json (1.0.0)
+      multi_json (~> 1.0)
+    fog-profitbricks (0.0.1)
+      fog-core
+      fog-xml
+      nokogiri
+    fog-radosgw (0.0.3)
+      fog-core (>= 1.21.0)
+      fog-json
+      fog-xml (>= 0.0.1)
+    fog-riakcs (0.1.0)
+      fog-core
+      fog-json
+      fog-xml
+    fog-sakuracloud (1.0.0)
+      fog-core
+      fog-json
+    fog-serverlove (0.1.1)
+      fog-core
+      fog-json
+    fog-softlayer (0.4.1)
+      fog-core
+      fog-json
+    fog-storm_on_demand (0.1.0)
+      fog-core
+      fog-json
+    fog-terremark (0.0.4)
+      fog-core
+      fog-xml
+    fog-vmfusion (0.0.1)
+      fission
+      fog-core
+    fog-voxel (0.0.2)
+      fog-core
+      fog-xml
+    fog-xml (0.1.1)
+      fog-core
+      nokogiri (~> 1.5, >= 1.5.11)
+    foreman (0.77.0)
+      dotenv (~> 1.0.2)
+      thor (~> 0.19.1)
+    formatador (0.2.5)
     github_api (0.9.7)
       faraday (~> 0.8.1)
       hashie (>= 1.2)
       multi_json (~> 1.4)
       nokogiri (~> 1.5.2)
       oauth2
-    google-api-client (0.6.3)
-      addressable (>= 2.3.2)
-      autoparse (>= 0.3.3)
-      extlib (>= 0.9.15)
-      faraday (~> 0.8.4)
-      jwt (>= 0.1.5)
-      launchy (>= 2.1.1)
-      multi_json (>= 1.0.0)
-      signet (>= 0.4.4)
-      uuidtools (>= 2.1.0)
     haml (4.0.2)
       tilt
     hashie (2.0.4)
-    heroku (2.25.0)
-      launchy (>= 0.3.2)
-      netrc (~> 0.7.1)
-      rest-client (~> 1.6.1)
-      rubyzip
-    hike (1.2.2)
+    hike (1.2.3)
     hiredis (0.4.5)
     http_parser.rb (0.5.3)
     httparty (0.11.0)
       multi_json (~> 1.0)
       multi_xml (>= 0.5.2)
     httpauth (0.2.0)
-    i18n (0.6.4)
+    i18n (0.7.0)
+    inflecto (0.0.2)
+    ipaddress (0.8.0)
     jquery-rails (2.2.1)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
-    json (1.7.7)
-    jwt (0.1.8)
+    json (1.8.2)
+    jwt (0.1.13)
       multi_json (>= 1.5)
-    kgio (2.8.0)
-    launchy (2.3.0)
-      addressable (~> 2.3)
-    libv8 (3.11.8.17)
     macaddr (1.6.1)
       systemu (~> 2.5.0)
-    mail (2.5.3)
-      i18n (>= 0.4.0)
-      mime-types (~> 1.16)
-      treetop (~> 1.4.8)
+    mail (2.6.3)
+      mime-types (>= 1.16, < 3)
     metaclass (0.0.1)
-    mime-types (1.23)
-    minitest (4.7.4)
+    mime-types (2.4.3)
+    minitest (4.7.5)
     mocha (0.13.3)
       metaclass (~> 0.0.1)
-    multi_json (1.7.2)
+    multi_json (1.10.1)
     multi_xml (0.5.3)
     multipart-post (1.2.0)
-    net-scp (1.1.0)
+    net-scp (1.2.1)
       net-ssh (>= 2.6.5)
-    net-ssh (2.6.7)
-    netrc (0.7.7)
+    net-ssh (2.9.2)
     newrelic_rpm (3.6.0.78)
-    nokogiri (1.5.9)
+    nokogiri (1.5.11)
     oauth2 (0.8.1)
       faraday (~> 0.8)
       httpauth (~> 0.1)
@@ -169,82 +217,63 @@ GEM
       oauth2 (~> 0.8.0)
       omniauth (~> 1.0)
     pg (0.15.1)
-    polyglot (0.3.3)
-    protected_attributes (1.0.1)
-      activemodel (>= 4.0.0.beta, < 5.0)
+    power_assert (0.2.2)
+    protected_attributes (1.0.8)
+      activemodel (>= 4.0.1, < 5.0)
+    puma (2.11.1)
+      rack (>= 1.1, < 2.0)
     rack (1.5.2)
-    rack-test (0.6.2)
+    rack-test (0.6.3)
       rack (>= 1.0)
-    rails (4.0.0.rc1)
-      actionmailer (= 4.0.0.rc1)
-      actionpack (= 4.0.0.rc1)
-      activerecord (= 4.0.0.rc1)
-      activesupport (= 4.0.0.rc1)
+    rails (4.0.13)
+      actionmailer (= 4.0.13)
+      actionpack (= 4.0.13)
+      activerecord (= 4.0.13)
+      activesupport (= 4.0.13)
       bundler (>= 1.3.0, < 2.0)
-      railties (= 4.0.0.rc1)
-      sprockets-rails (~> 2.0.0.rc4)
-    railties (4.0.0.rc1)
-      actionpack (= 4.0.0.rc1)
-      activesupport (= 4.0.0.rc1)
+      railties (= 4.0.13)
+      sprockets-rails (~> 2.0)
+    rails_12factor (0.0.3)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.4)
+    rails_stdout_logging (0.0.3)
+    railties (4.0.13)
+      actionpack (= 4.0.13)
+      activesupport (= 4.0.13)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
-    rainbows (4.5.0)
-      kgio (~> 2.5)
-      rack (~> 1.1)
-      unicorn (~> 4.6, >= 4.6.2)
-    raindrops (0.11.0)
-    rake (10.0.4)
-    ref (1.0.4)
-    rest-client (1.6.7)
-      mime-types (>= 1.16)
+    rake (10.4.2)
     rmagick (2.13.2)
-    ruby-hmac (0.4.0)
-    rubyzip (0.9.9)
     shoulda (2.11.3)
     shoulda-matchers (2.0.0)
       activesupport (>= 3.0.0)
-    signet (0.4.5)
-      addressable (>= 2.2.3)
-      faraday (~> 0.8.1)
-      jwt (>= 0.1.5)
-      multi_json (>= 1.0.0)
     simple_form (1.4.1)
     spin (0.6.0)
-    sprockets (2.9.3)
+    sprockets (2.12.3)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sprockets-rails (2.0.0.rc4)
+    sprockets-rails (2.2.4)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
-      sprockets (~> 2.8)
+      sprockets (>= 2.8, < 4.0)
     systemu (2.5.2)
-    therubyracer (0.11.4)
-      libv8 (~> 3.11.8.12)
-      ref
-    thor (0.18.1)
-    thread_safe (0.1.0)
-      atomic
-    tilt (1.4.0)
-    treetop (1.4.12)
-      polyglot
-      polyglot (>= 0.3.1)
-    tzinfo (0.3.37)
-    unicorn (4.6.2)
-      kgio (~> 2.6)
-      rack
-      raindrops (~> 0.7)
+    test-unit (3.0.9)
+      power_assert
+    thor (0.19.1)
+    thread_safe (0.3.4)
+    tilt (1.4.1)
+    tzinfo (0.3.43)
     uuid (2.3.7)
       macaddr (~> 1.0)
-    uuidtools (2.1.4)
     will_paginate (3.0.4)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  activerecord-postgresql-adapter
   bootstrap-will_paginate
   carrierwave
   coffee-script
@@ -252,9 +281,9 @@ DEPENDENCIES
   fakeweb
   firehose
   fog
+  foreman
   github_api
   haml
-  heroku
   httparty
   jquery-rails
   mocha
@@ -262,14 +291,15 @@ DEPENDENCIES
   omniauth-github
   pg
   protected_attributes
-  rails (= 4.0.0.rc1)
-  rainbows
+  puma
+  rails (= 4.0.13)
+  rails_12factor
   rmagick (= 2.13.2)
   shoulda
   shoulda-matchers
   simple_form
   spin
   sprockets-rails
-  therubyracer
+  test-unit
   uuid
   will_paginate

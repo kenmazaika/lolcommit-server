@@ -14,11 +14,12 @@
 /log/*.log
 /tmp
 
-# Ignore local database.yml
-config/database.yml
-
-#VIM
+# Vim
 *.swp
 public/uploads
 *.swo
 dump.rdb
+
+# Ignore local configuration
+config/database.yml
+.env

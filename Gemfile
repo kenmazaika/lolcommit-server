@@ -1,18 +1,19 @@
-ruby '2.0.0'
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.0.rc1'
-gem 'sprockets-rails', :require => 'sprockets/railtie'
+ruby "2.2.0"
 
-group :development, :test do
-  gem 'pg'
-end
-
-gem 'firehose'
+# Rails
+gem 'rails', '4.0.13'
+gem 'jquery-rails'
 gem 'coffee-script'
-gem 'rainbows'
+gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem 'protected_attributes'
-gem 'heroku'
+
+# Web server (see Procfile)
+gem 'puma'
+
+# App dependencies
+gem 'firehose'
 gem 'uuid'
 gem "rmagick", "2.13.2", :require => 'RMagick'
 gem 'httparty'
@@ -20,20 +21,26 @@ gem 'omniauth-github'
 gem 'github_api'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
-
-group :production do
-  gem 'activerecord-postgresql-adapter'
-  gem 'newrelic_rpm'
-end
-
 gem 'fog'
 gem 'haml'
 gem 'simple_form'
 gem 'carrierwave'
+gem 'pg'
 
-gem 'therubyracer', :platform => :ruby
+group :production do
+  # heroku
+  gem 'rails_12factor'
+  # monitoring
+  gem 'newrelic_rpm'
+end
+
+group :development do
+  # running Procfile
+  gem 'foreman'
+end
 
 group :test do
+  gem 'test-unit'
   gem 'spin'
   gem 'mocha', :require => false
   gem 'fakeweb'
@@ -41,5 +48,3 @@ group :test do
   gem 'shoulda', :require => false
   gem 'shoulda-matchers', :require => false
 end
-
-gem 'jquery-rails'

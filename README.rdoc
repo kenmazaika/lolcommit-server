@@ -32,8 +32,8 @@ at GitHub for local development;
 Visit https://github.com/settings/application create a new app and make sure to
 set the following;
 
-* Homepage URL: `http://localhost:3000`
-* Authorization callback URL: `http://localhost:3000/auth/github/callback`
+    Homepage URL: http://localhost:3000
+    Authorization callback URL: http://localhost:3000/auth/github/callback
 
 Then paste your new GitHub application key and secret to app's the local `.env`
 file.

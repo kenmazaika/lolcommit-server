@@ -19,16 +19,16 @@ ActiveRecord::Schema.define(version: 20120714222426) do
   create_table "animated_gifs", force: true do |t|
     t.string   "image"
     t.text     "shas"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "git_commits", force: true do |t|
     t.string   "image"
     t.string   "sha"
     t.string   "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "repo_id"
     t.string   "raw"
@@ -42,8 +42,8 @@ ActiveRecord::Schema.define(version: 20120714222426) do
   create_table "repos", force: true do |t|
     t.string   "username"
     t.string   "name"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "external_id"
   end
 
@@ -64,8 +64,8 @@ ActiveRecord::Schema.define(version: 20120714222426) do
     t.string   "token"
     t.string   "api_key"
     t.string   "api_secret"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "users", ["api_key"], name: "index_users_on_api_key", using: :btree

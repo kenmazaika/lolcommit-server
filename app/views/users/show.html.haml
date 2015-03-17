@@ -1,8 +1,0 @@
-%h2= selected_user.name
-
-%br
-
-- @commits.each do |gc|
-  = render gc, :show_repo => true, :show_name => false
-
-= will_paginate @commits 

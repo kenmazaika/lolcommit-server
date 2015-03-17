@@ -1,39 +1,9 @@
 == lolcommit-server
 
-=== Getting Started locally
+This repository has moved to lolcommits-dot-com within the Lolcommits GitHub org here;
 
-Some initial set up is involved after cloning this repository. First configure
-your local postgresql connection in config/database.yml
+https://github.com/lolcommits/lolcommits-dot-com
 
-    cp config/database.example.yml config/database.yml
+Please update your git remotes with;
 
-Setup initial env variables
-
-    cp .env.example .env
-
-Install dependencies
-
-    bundle install
-    bundle exec rake db:migrate
-
-To run the app web server at http://localhost:3000 run;
-
-   bundle exec foreman start
-
-To run the test suite;
-
-    bundle exec rake
-
-=== GitHub AUTH
-
-If you want to have Git AUTH work locally, you should create a new application
-at GitHub for local development;
-
-Visit https://github.com/settings/application create a new app and make sure to
-set the following;
-
-    Homepage URL: http://localhost:3000
-    Authorization callback URL: http://localhost:3000/auth/github/callback
-
-Then paste your new GitHub application key and secret to app's the local `.env`
-file.
+    git remote set-url origin git@github.com:lolcommits/lolcommits-dot-com.git
